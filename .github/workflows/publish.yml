@@ -2,6 +2,8 @@ name: Publish to NPM
 
 on:
   push:
+    branches:
+      - main
     tags:
       - 'v*.*.*'
   workflow_dispatch:
@@ -9,9 +11,14 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -24,6 +31,14 @@ jobs:
 
       - name: Build TypeScript Project
         run: npm run build
+
+      - name: Auto Bump Version on Push to Main
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          npm version patch -m "chore(release): bump version to %s [skip ci]"
+          git push origin main --tags
 
       - name: Publish to NPM
         run: npm publish --access public
