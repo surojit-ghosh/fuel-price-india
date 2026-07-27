@@ -1,6 +1,6 @@
 {
   "name": "fuel-price-india",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "High-performance, fingerprinted scraper and daily series dataset generator for petrol and diesel prices across Indian cities and states.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
