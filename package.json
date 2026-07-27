@@ -1,0 +1,49 @@
+{
+  "name": "fuel-price-india",
+  "version": "1.0.0",
+  "description": "High-performance, fingerprinted scraper and daily series dataset generator for petrol and diesel prices across Indian cities and states.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "fuel-india": "dist/cli.js",
+    "fuel-price-india": "dist/cli.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx src/index.ts",
+    "prepublishOnly": "npm run build"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": [
+    "fuel-price",
+    "india",
+    "petrol-price",
+    "diesel-price",
+    "indian-states",
+    "dataset-generator",
+    "mypetrolprice",
+    "browser-fingerprint",
+    "historical-data",
+    "csv-exporter"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.7.9",
+    "commander": "^12.1.0",
+    "header-generator": "^2.1.58",
+    "ora": "^5.4.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.10",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3"
+  }
+}
